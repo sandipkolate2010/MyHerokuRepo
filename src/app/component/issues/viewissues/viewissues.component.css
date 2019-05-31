@@ -1,0 +1,49 @@
+.mat-header-cell{
+  background-color: rgb(233, 232, 232);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.mat-column-Description {
+  flex: 0 0 40%;
+}
+
+.mat-column-Severity {
+  flex: 0 0 10%;
+  text-align: center;
+}
+
+.mat-column-Status {
+  flex: 0 0 10%;
+  text-align: center;
+}
+
+.mat-column-CreatedDate {
+  flex: 0 0 15%;
+  text-align: center;
+}
+
+.mat-column-ResolvedDate {
+  flex: 0 0 15%;
+  text-align: center;
+}
+
+/* .mat-column-Action {
+  flex: 0 0 10%;
+  text-align: center;
+} */
+
+#filter {
+  /* width: 220px; */
+  /* height: 300px; */
+  /* border: 1px solid black; */
+  display: -webkit-flex; /* Safari */
+  -webkit-align-items: center; /* Safari 7.0+ */
+  display: flex;
+  align-items: center;
+}
+
+#filter div {
+   -webkit-flex: 1; /* Safari 6.1+ */
+   flex: 1;
+}

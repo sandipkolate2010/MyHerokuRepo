@@ -1,0 +1,65 @@
+<div class="container">
+  <form #issueForm="ngForm" (ngSubmit)="addupdateissue(issue)">
+    <div class="row" style="padding: 1em;">
+      <div class="col-12 col-md-6 offset-md-3">
+        <h2>Add or Modify issue details</h2>
+        <div class="form-box">
+          <div class="row">
+            <div class="col-3 col-md-3">
+              <span><b>Description:</b></span>
+            </div>
+            <div class="col-9 col-md-9">
+              <div class="form-group">
+                <textarea rows="3" required id="Description" name="Description" [(ngModel)]="issue.Description" type="text"
+                  class="form-control" #Description="ngModel" title="Description" placeholder="Description *"
+                  [class.input-error]="Description.invalid && Description.touched" ></textarea>
+                <span class="error-message" *ngIf="Description.invalid && Description.touched">
+                  Please provide Description
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3 col-md-3">
+              <span><b>Severity:</b></span>
+            </div>
+            <div class="col-9 col-md-9">
+              <div class="form-group">
+                <select id="Severity" name="Severity" [(ngModel)]="issue.Severity" #Severity="ngModel" title="Severity"
+                  (change)="onSeverityChange($event)" class="form-control">
+                  <option *ngFor="let x of severityTypes" [value]="x.id" [selected]="severityFilter.id == x.id">
+                    {{x.value}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3 col-md-3">
+              <span><b>Status:</b></span>
+            </div>
+            <div class="col-9 col-md-9">
+              <div class="form-group">
+                <select id="Status" name="Status" [(ngModel)]="issue.Status" #Status="ngModel" title="Status"
+                  (change)="onStatusChange($event)" class="form-control">
+                  <option *ngFor="let x of statusTypes" [value]="x.id" [selected]="statusFilter.id == x.id">{{x.value}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class=row>
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6" style="text-align: right;">
+              <button type="submit" style="margin-right: 1em;" class="savebutton"
+                [ngClass]="issueForm.invalid ? 'btn btn-secondary':'btn btn-primary'"
+                [disabled]="issueForm.invalid">Save</button>
+              <button type="button" style="margin-right: 1em;" class="btn btn-secondary"
+                (click)="onCancel()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

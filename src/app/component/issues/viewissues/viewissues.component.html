@@ -1,0 +1,80 @@
+<div class="container">
+  <div style="text-align: center; padding: 1em;">
+    <span>
+      <h3>Manage Issue Tracker</h3>
+    </span>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-12" id="filter">
+      <span style="margin-left: 1em; font-weight: bold;">Filter:</span>
+      <input style="width: 20%; margin-left: 1em;" required id="Description" name="Description"
+        [(ngModel)]="issueDescription" type="text" title="Description" placeholder="Description" class="form-control">
+      <select style="width: 20%; margin-left: 1em;" id="Severity" name="Severity" [(ngModel)]="issueSeverity"
+        #Severity="ngModel" title="Severity" class="form-control">
+        <option *ngFor="let x of severityTypes" [value]="x.id" [selected]="severityFilter.id == x.id">
+          {{x.value}}</option>
+      </select>
+      <select style="width: 20%;  margin-left: 1em;" id="Status" name="Status" [(ngModel)]="issueStatus"
+        #Status="ngModel" title="Status" class="form-control">
+        <option *ngFor="let x of statusTypes" [value]="x.id" [selected]="statusFilter.id == x.id">{{x.value}}
+        </option>
+      </select>
+      <button style="width: 10%;  margin-left: 1em;" name="Search" title="Search" class="btn btn-primary"
+        (click)="onSearch($event)">Search</button>
+    </div>
+  </div>
+  <div class="row mat-elevation-z8" style="padding: 1em; margin: 1em;">
+    <div class="col-md-12">
+      <span style="font-weight: bold; color: rgb(110, 6, 6);">View, Add, Update and Delete Issues</span>
+      <p style="float: right;">
+        <button style="margin-left: 1em" class="btn btn-primary"  (click)="addColumn()"> Add column </button>
+        <button style="margin-left: 1em" class="btn btn-primary"  (click)="removeColumn()"> Remove column </button>
+        <button style="margin-left: 1em" name="AddIssue" title="Add Issue" class="btn btn-primary" (click)="onAdd($event)">Add Issue</button></p>
+    </div>
+    <div class="col-md-12">
+      <mat-table #table [dataSource]="dataSource">
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns.filter(filterColumns);">
+          <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+          <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+        </ng-container>
+        <!-- Description Column -->
+        <!-- <ng-container matColumnDef="Description">
+          <mat-header-cell *matHeaderCellDef> Issue Description </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Description}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Severity">
+          <mat-header-cell *matHeaderCellDef> Severity </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Severity}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+          <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Status}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="CreatedDate">
+          <mat-header-cell *matHeaderCellDef> Created Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.CreatedDate}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ResolvedDate">
+          <mat-header-cell *matHeaderCellDef> Resolved Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.ResolvedDate}} </mat-cell>
+        </ng-container> -->
+
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element">
+            <a class="fa fa-edit" aria-hidden="true" (click)="onEdit($event)" id="{{element.id}}"></a>
+            |
+            <a class="fa fa-trash" aria-hidden="true" (click)="onDelete($event)" id="{{element.id}}"></a>
+          </td>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>
