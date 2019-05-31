@@ -1,0 +1,36 @@
+{
+  "issues": [
+    {
+      "id": 1,
+      "Description": "Getting error page not found 404",
+      "Severity": "Minor",
+      "Status": "Open",
+      "CreatedDate": "2019/03/24",
+      "ResolvedDate": ""
+    },
+    {
+      "id": 2,
+      "Description": "Not able to login into site, Incorrect user ID or password. Type you correct user ID in the format of email and your password, and try again.",
+      "Severity": "Minor",
+      "Status": "Closed",
+      "CreatedDate": "2019/02/24",
+      "ResolvedDate": "2019/03/24"
+    },
+    {
+      "Severity": "Minor",
+      "Status": "Open",
+      "Description": "getting error: 'rxjs has no exported member 'Observable'",
+      "CreatedDate": "2019/03/24",
+      "ResolvedDate": "",
+      "id": 3
+    },
+    {
+      "Severity": "Major",
+      "Status": "Closed",
+      "Description": "ERROR in node_modules/rxjs/internal/types.d.ts(81,44): error TS1005: ';' expected",
+      "CreatedDate": "2019/03/24",
+      "ResolvedDate": "2019/03/24",
+      "id": 4
+    }
+  ]
+}
