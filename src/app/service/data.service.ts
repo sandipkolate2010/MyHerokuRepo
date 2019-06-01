@@ -17,11 +17,11 @@ export class DataService {
 
 
   getIssues() {
-    return this.http.get('http://localhost:3000/issues');
+    return this.http.get('http://localhost:3000/getAllIssues');
   }
 
   getIssue(id: number) {
-    return this.http.get('http://localhost:3000/issues/' + id);
+    return this.http.get('http://localhost:8080/getAllIssues/' + id);
   }
 
   addIssue(payload: any) {
