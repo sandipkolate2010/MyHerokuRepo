@@ -63,7 +63,7 @@ export class ViewissuesComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.loadIssues();
+    // this.loadIssues();
   }
 
   loadIssues() {
